@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex" />
+  <title>Writers Offline</title>
+  <script>
+    sessionStorage.setItem("wo-redirect", location.pathname + location.search + location.hash);
+    location.replace("/writersoffline/");
+  </script>
+</head>
+<body>
+  <a href="/writersoffline/">Writers Offline</a>
+</body>
+</html>
