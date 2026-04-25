@@ -17,7 +17,7 @@
     const redirect = sessionStorage.getItem('wo-redirect');
     if (redirect) { sessionStorage.removeItem('wo-redirect'); history.replaceState(null, '', redirect); }
 
-    const BASE = '/writersoffline';
+    const BASE = location.hostname.endsWith('github.io') ? '/writersoffline' : '';
     const h = React.createElement;
     const amazon = id => `https://images-na.ssl-images-amazon.com/images/P/${id}.01._SCLZZZZZZZ_.jpg`;
     const published = [
@@ -33,7 +33,7 @@
     ];
     const nav = [['Home','/'],['Danielle','/danielletx'],['Poetry','/danielletx/poetry'],['Research','/research'],['theWOPE','/thewope'],['About','/about']];
     const titles = ['The Un : Illustrated Book of Seasons','Crutch-Makers & Insects','Lucifer Starfish','The Crayon Chronicles','The Girl Who Invented Sin','Diasnu','An Inescapable Inevitable'];
-    function path(){ let p = location.pathname; if (p.startsWith(BASE)) p = p.slice(BASE.length) || '/'; return p.replace(/\/$/,'') || '/'; }
+    function path(){ let p = location.pathname; if (BASE && p.startsWith(BASE)) p = p.slice(BASE.length) || '/'; return p.replace(/\/$/,'') || '/'; }
     function href(to){ return BASE + (to === '/' ? '/' : to); }
     function go(to){ history.pushState(null,'',href(to)); render(); scrollTo({top:0,behavior:'smooth'}); }
     function A({to, children, cls='btn secondary'}){ return h('a',{href:href(to),className:cls,onClick:e=>{e.preventDefault();go(to)}},children); }
