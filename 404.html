@@ -1,0 +1,9 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Redirecting...</title>
+<script>
+  const base = location.hostname.endsWith('github.io') ? '/writersoffline/' : '/';
+  sessionStorage.setItem('wo-redirect', location.pathname + location.search + location.hash);
+  location.replace(base);
+</script>
+<p>Redirecting to Writers Offline...</p>
